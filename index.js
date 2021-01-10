@@ -1,12 +1,11 @@
 const fs = require("fs");
 const mergeFiles = require("merge-files");
-const algos = "../completedProblemsUnsolved/";
+const algos = "./completedProblemsUnsolved/";
 
 const fileNames = fs.readdirSync(algos);
-const outputPath = __dirname + "/test.js";
+const outputPath = `${__dirname}/test/randomProblems.js`;
 
 const randomProblemGenerator = (fileNames) => {
-  // let result = new Set();
   const result = {};
   while (Object.keys(result).length < 10) {
     let randomIndex = Math.floor(Math.random() * Math.floor(fileNames.length));
