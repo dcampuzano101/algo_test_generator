@@ -15,7 +15,16 @@ Sample Output
 
 */
 
-const caesarCipher = (string, key) => {};
+const caesarCipher = (string, key) => {
+  const alpha = "abcdefghijklmnopqrstuvwxyz";
+  let result = "";
+
+  for (let i = 0; i < string.length; i++) {
+    let newPosition = (alpha.indexOf(string[i]) + key) % 26;
+    result += alpha[newPosition];
+  }
+  return result;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -37,7 +46,16 @@ Sample Output
     true
 */
 
-const isMonotonic = (array) => {};
+const isMonotonic = (array) => {
+  let isNonIncreasing = true;
+  let isNonDecreasing = true;
+
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < array[i - 1]) isNonDecreasing = false;
+    if (array[i] > array[i - 1]) isNonIncreasing = false;
+  }
+  return isNonDecreasing || isNonIncreasing;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -62,7 +80,26 @@ Sample Output
 
 */
 
-const spiralTraverse = (array) => {};
+const spiralTraverse = (array) => {
+  let startCol = 0;
+  let endCol = array[0].length - 1;
+  let startRow = 0;
+  let endRow = array.length - 1;
+  let result = [];
+
+  while (startCol <= endCol && startRow <= endRow) {
+    for (let row = startRow; row <= endCol; row++) {
+      result.push(array[startRow][row]);
+    }
+
+    for (let row = startRow; row <= endRow ; row++) {
+      result.push(array[row][endCol])
+    }
+
+    for (let col = )
+  }
+
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -77,7 +114,19 @@ Sample Input
 Sample Output
   true // it's written the same forward and backward
 */
-const isPalindrome = (arr, target) => {};
+const isPalindrome = (string, target) => {
+  let i = 0;
+  let j = string.length - 1;
+
+  while (i < j) {
+    if (string[i] !== string[j]) {
+      return false;
+    }
+    i++;
+    j--;
+  }
+  return true;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -106,7 +155,20 @@ Sample Output
     "9A4A2B4C2D"
 */
 
-const runEncoding = (string) => {};
+const runEncoding = (string) => {
+  let counter = 1;
+  let result = "";
+
+  for (let i = 0; i < string.length; i++) {
+    if (string[i] !== string[i+1] || counter === 9) {
+      result += `${counter}${string[i]}`;
+      counter = 1;
+    } else {
+      counter++;
+    }
+  }
+  return result;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -142,7 +204,20 @@ Sample Output
 
 */
 
-const nodeDepths = (root) => {};
+const nodeDepths = (root) => {
+  let stack = [{ node: root, depth: 0}];
+  let sumOfDepths = 0;
+
+  while (stack.length > 0) {
+    const { node, depth } = stack.pop();
+    if (!node) continue;
+    sumOfDepths += depth;
+
+    stack.push({ node: node.left, depth: depth + 1})
+    stack.push({ node: node.right, depth: depth + 1})
+  }
+  return sumOfDepths;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -163,7 +238,23 @@ Sample Output
 
 */
 
-const moveElementToEnd = (array, target) => {};
+const moveElementToEnd = (array, target) => {
+  let i = 0;
+  let j = array.length - 1;
+
+  while (i < j) {
+    while (i < j && array[j] === target) {
+      j--;
+    }
+
+    if (array[i] === target) {
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    i++;
+  }
+  return array;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -179,9 +270,25 @@ getNthFib(1) is equal to F0, getNthFib(2)
 is equal to F1, etc..
 
 */
-const getNthFib = (n) => {};
+const getNthFib = (n) => {
+  // base case n = 1 , n = 2 
+  if (n === 1) return 0
+  if (n === 2) return 1
 
-const getNthFibIteratively = (n) => {};
+  return getNthFib(n - 1) + getNthFib(n - 2);
+};
+
+const getNthFibIteratively = (n) => {
+  let fibs = [0, 1];
+
+
+  while (fibs.length < n) {
+    let last = fibs[fibs.length - 1]
+    let second = fibs[fibs.length - 2]
+    fibs.push(last + second);
+  }
+  return fibs[fibs.length - 1];
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -214,7 +321,24 @@ Sample Output
 
 */
 
-const branchSums = (root) => {};
+const branchSums = (root) => {
+  let sums = [];
+  calculateBranchSums(root, 0, sums);
+  return sums;
+};
+
+const calculateBranchSums = (node, runningSum, sums) => {
+  if (!node) return;
+
+  let newSum = runningSum + node.value;
+
+  if (!node.left && !node.right) {
+    return sums.push(newSum);
+  }
+
+  calculateBranchSums(node.left, newSum, sums);
+  calculateBranchSums(node.right, newSum, sums);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*
@@ -231,6 +355,22 @@ Sample Output
 
 */
 
-const selectionSort = (array) => {};
+const selectionSort = (array) => {
+  let startIndex = 0;
+
+  while (startIndex < array.length) {
+    let smallestIndex = startIndex;
+
+    for (let i = smallestIndex + 1; i < array.length; i++) {
+      if (array[i] < array[smallestIndex]) {
+        smallestIndex = i;
+      }
+
+    }
+    [array[smallestIndex], array[startIndex]] = [array[startIndex], array[smallestIndex]];
+    startIndex++;
+  }
+  return array;
+};
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
