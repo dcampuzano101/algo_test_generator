@@ -30,6 +30,14 @@ Sample Output
  Summing all of these depths yields 16.
 
 */
+// This is the class of the input binary tree.
+class BinaryTree {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
 
 const nodeDepths = (root) => {};
 

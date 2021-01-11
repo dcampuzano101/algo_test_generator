@@ -22,6 +22,14 @@ Sample Input tree:
 1            14
 
 */
+// This is the class of the input tree. Do not edit.
+class BST {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
 
 const findClosestValueInBst = (tree, target) => {};
 

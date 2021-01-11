@@ -30,7 +30,21 @@ Sample Output
   ["A", "B", "E", "F", "I", "J", "C", "D", "G", "K", "H"]
 
 */
+// COMPLETE depthFirstSearch
+class Node {
+  constructor(name) {
+    this.name = name;
+    this.children = [];
+  }
 
-const depthFirstSearch = (array) => {};
+  addChild(name) {
+    this.children.push(new Node(name));
+    return this;
+  }
+
+  depthFirstSearch(array) {
+    //CODE HERE
+  }
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
